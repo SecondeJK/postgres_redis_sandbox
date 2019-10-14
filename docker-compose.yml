@@ -9,3 +9,5 @@ services:
       - POSTGRES_USER=jimseconde
       - POSTGRES_PASSWORD=jimseconde
       - POSTGRES_DB=hoopy
+    ports:
+      - "54320:5432"
