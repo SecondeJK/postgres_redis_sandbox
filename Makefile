@@ -4,9 +4,11 @@ default:
 build:
 	docker-compose up -d
 	@echo "Loading dummy db"
-	@export PGPASSWORD="jimseconde"
-	# do the thing to get data in the db
-#	psql -h localhost -p 54320 hoopy jimseconde < pagila-insert-data.sql
+	@export PGPASSWORD="postgres"
+	# cannot do this until I use Dockerfile to build the container and expose the ports on listen_address
+	psql -h localhost -p 54320 pagila postgres < pagila-schema.sql
+	psql -h localhost -p 54320 pagila postgres < pagila-data.sql
 
 destroy:
 	docker-compose down
+	docker system prune -f
