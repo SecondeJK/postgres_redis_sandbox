@@ -1,25 +1,11 @@
 version: "3"
 services:
-  db:
+  postgresDb:
     image: "postgres:latest"
-    #   Give the container the name my_postgres. You can changes to something else.
     restart: always
-    container_name: "jim_postgres"
+    container_name: "postgres_container"
     #   Setup the username, password, and database name. You can changes these values.
     environment:
       - POSTGRES_USER=jimseconde
       - POSTGRES_PASSWORD=jimseconde
-      - POSTGRES_DB=postgres_redis_sandbox
-    #   Maps port 54320 (localhost) to port 5432 on the container. You can change the ports to fix your needs.
-    ports:
-      - "54320:5432"
-    #   Set a volume some that database is not lost after shutting down the container.
-    #   I used the name postgres-data but you can changed it to something else.
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-  # admin
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+      - POSTGRES_DB=hoopy
