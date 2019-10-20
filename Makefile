@@ -9,7 +9,6 @@ destroy:
 	docker system prune -f
 
 load:
-	@echo "Loading dummy db"
-	@export PGPASSWORD="postgres"
-	psql -h localhost -p 54320 pagila postgres < pagila-schema.sql
-	psql -h localhost -p 54320 pagila postgres < pagila-data.sql
+	@echo "Loading data"
+	export PGPASSWORD='postgres'; psql -h localhost -p 54320 pagila postgres < pagila-schema.sql
+	export PGPASSWORD='postgres'; psql -h localhost -p 54320 pagila postgres < pagila-data.sql
